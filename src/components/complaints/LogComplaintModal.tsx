@@ -40,8 +40,8 @@ const LogComplaintModal: React.FC<LogComplaintModalProps> = ({ onClose }) => {
             <input
               type="text"
               className="w-full border rounded-lg px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-200 bg-gray-50 font-[Satoshi]"
-              placeholder="0123456789"
-              defaultValue="0123456789"
+              placeholder="1100105514"
+              defaultValue="1100105514"
             />
           </div>
           <div>
@@ -49,8 +49,8 @@ const LogComplaintModal: React.FC<LogComplaintModalProps> = ({ onClose }) => {
             <input
               type="text"
               className="w-full border rounded-lg px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-200 bg-gray-50 font-[Satoshi]"
-              placeholder="Nazeer Ajibola"
-              defaultValue="Nazeer Ajibola"
+              placeholder="Wemi Moyela"
+              defaultValue="Wemi Moyela"
             />
           </div>
           <div>
