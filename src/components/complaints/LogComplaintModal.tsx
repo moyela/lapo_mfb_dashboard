@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { createPortal } from 'react-dom';
 
 interface LogComplaintModalProps {
   onClose: () => void;
@@ -7,7 +8,7 @@ interface LogComplaintModalProps {
 const LogComplaintModal: React.FC<LogComplaintModalProps> = ({ onClose }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0F172A]/70 backdrop-blur-sm font-[Satoshi]">
       <div className="bg-white rounded-xl shadow-xl w-full max-w-md mx-auto p-0 relative animate-fade-in">
         <button
@@ -86,7 +87,8 @@ const LogComplaintModal: React.FC<LogComplaintModalProps> = ({ onClose }) => {
           </button>
         </form>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 

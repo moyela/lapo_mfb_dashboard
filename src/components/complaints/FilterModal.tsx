@@ -1,11 +1,12 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
 
 interface FilterModalProps {
   onClose: () => void;
 }
 
 const FilterModal: React.FC<FilterModalProps> = ({ onClose }) => {
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0F172A]/70 backdrop-blur-sm font-[Satoshi]">
       <div className="bg-white rounded-xl shadow-xl w-full max-w-md mx-auto p-0 relative animate-fade-in">
         <button
@@ -59,7 +60,8 @@ const FilterModal: React.FC<FilterModalProps> = ({ onClose }) => {
           </button>
         </form>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 

@@ -10,9 +10,9 @@ interface ComplaintsTableProps {
 // Dummy data for demonstration
 const dummyComplaints = Array.from({ length: 12 }).map((_, i) => ({
   id: i + 1,
-  accountNumber: '0123456789',
-  customerName: 'Nazeer Ajibola',
-  submissionDate: '11/14/2024 10:27:43',
+  accountNumber: '1100105514',
+  customerName: 'Wemi Moyela',
+  submissionDate: '16/05/2025 10:27:43',
   category: 'Card Dispute',
 }));
 

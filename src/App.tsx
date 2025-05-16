@@ -11,6 +11,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
+          <Route path="/" element={<SkeletonComplaints />} />
           <Route path="complaints/log" element={<ComplaintsLog />} />
           <Route path="complaints/log/:id" element={<ComplaintDetails type="log" />} />
           <Route path="complaints/resolve" element={<ComplaintsResolve />} />
