@@ -1,7 +1,7 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, LineChart, Line } from 'recharts';
 import { PieChart, Pie, Cell } from 'recharts';
-import { ArrowUpRightIcon, ArrowTrendingUpIcon, ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
+import { ArrowUpRightIcon, ArrowTrendingUpIcon, ChevronUpDownIcon } from '@heroicons/react/24/outline';
 
 const monthlyIssuanceData = [
   { name: 'May', Personalized: 15, Instant: 35, total: 50 },
@@ -131,7 +131,7 @@ const Dashboard = () => {
               <span className="text-sm text-gray-600">Total Active Cards</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-2xl font-semibold">26,478</span>
+              <span className="text-2xl font-bold">26,478</span>
               <span className="text-sm text-green-600">+9% this month</span>
             </div>
           </div>
@@ -148,7 +148,7 @@ const Dashboard = () => {
               <span className="text-sm text-gray-600">Total Personalized Cards</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-2xl font-semibold">15,703</span>
+              <span className="text-2xl font-bold">15,703</span>
               <span className="text-sm text-green-600">8.5% this month</span>
             </div>
           </div>
@@ -165,7 +165,7 @@ const Dashboard = () => {
               <span className="text-sm text-gray-600">Today's Revenue</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-2xl font-semibold">₦9.3M</span>
+              <span className="text-2xl font-bold">₦9.3M</span>
               <span className="text-sm text-green-600">+6% vs yesterday</span>
             </div>
           </div>
@@ -182,7 +182,7 @@ const Dashboard = () => {
               <span className="text-sm text-gray-600">Pending Requests</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-2xl font-semibold">38</span>
+              <span className="text-2xl font-bold">38</span>
               <span className="text-sm text-orange-600">Requires attention</span>
             </div>
           </div>
@@ -196,7 +196,7 @@ const Dashboard = () => {
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold">Monthly Issuance</h3>
             <button className="text-gray-400 hover:text-gray-600">
-              <ArrowTopRightOnSquareIcon className="w-5 h-5" />
+              <ChevronUpDownIcon className="w-5 h-5 rotate-45" />
             </button>
           </div>
           <div className="h-[300px]">
@@ -239,42 +239,44 @@ const Dashboard = () => {
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold">Recent Card Requests</h3>
             <button className="text-gray-400 hover:text-gray-600">
-              <ArrowTopRightOnSquareIcon className="w-5 h-5" />
+              <ChevronUpDownIcon className="w-5 h-5 rotate-45" />
             </button>
           </div>
-          <table className="w-full">
-            <thead>
-              <tr className="text-left text-sm text-gray-600">
-                <th className="pb-2">Branch</th>
-                <th className="pb-2">Card Type</th>
-                <th className="pb-2">Quantity</th>
-                <th className="pb-2">Status</th>
-                <th className="pb-2">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {recentRequests.map((request, index) => (
-                <tr key={index} className="border-t">
-                  <td className="py-3">{request.branch}</td>
-                  <td>{request.cardType}</td>
-                  <td>{request.quantity}</td>
-                  <td>
-                    <span className={`px-2 py-1 rounded-full text-xs
-                      ${request.status === 'Ready' ? 'bg-green-100 text-green-800' :
-                        request.status === 'In Progress' ? 'bg-yellow-100 text-yellow-800' :
-                        request.status === 'Acknowledged' ? 'bg-blue-100 text-blue-800' :
-                        'bg-gray-100 text-gray-800'
-                      }`}>
-                      {request.status}
-                    </span>
-                  </td>
-                  <td>
-                    <button className="text-blue-600 hover:text-blue-800">{request.action}</button>
-                  </td>
+          <div className="h-[300px] overflow-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="text-left text-sm text-gray-600">
+                  <th className="pb-2">Branch</th>
+                  <th className="pb-2">Card Type</th>
+                  <th className="pb-2">Quantity</th>
+                  <th className="pb-2">Status</th>
+                  <th className="pb-2">Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {recentRequests.map((request, index) => (
+                  <tr key={index} className="border-t">
+                    <td className="py-3">{request.branch}</td>
+                    <td>{request.cardType}</td>
+                    <td>{request.quantity}</td>
+                    <td>
+                      <span className={`px-2 py-1 rounded-full text-xs
+                        ${request.status === 'Ready' ? 'bg-green-100 text-green-800' :
+                          request.status === 'In Progress' ? 'bg-yellow-100 text-yellow-800' :
+                          request.status === 'Acknowledged' ? 'bg-blue-100 text-blue-800' :
+                          'bg-gray-100 text-gray-800'
+                        }`}>
+                        {request.status}
+                      </span>
+                    </td>
+                    <td>
+                      <button className="text-blue-600 hover:text-blue-800">{request.action}</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
 
         {/* This Week's Income */}
@@ -282,7 +284,7 @@ const Dashboard = () => {
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold">This Week's Income</h3>
             <button className="text-gray-400 hover:text-gray-600">
-              <ArrowTopRightOnSquareIcon className="w-5 h-5" />
+              <ChevronUpDownIcon className="w-5 h-5 rotate-45" />
             </button>
           </div>
           <div className="h-[300px]">
@@ -309,7 +311,7 @@ const Dashboard = () => {
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold">Card Status Distribution</h3>
             <button className="text-gray-400 hover:text-gray-600">
-              <ArrowTopRightOnSquareIcon className="w-5 h-5" />
+              <ChevronUpDownIcon className="w-5 h-5 rotate-45" />
             </button>
           </div>
           <div className="h-[300px] flex items-center justify-center relative">
